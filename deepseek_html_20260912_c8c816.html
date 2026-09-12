@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Host - Live Trivia</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+
+  <div id="setupView">
+    <h1>🎯 Host a Quiz</h1>
+    <label>Quiz Title</label>
+    <input id="title" value="Live Trivia" />
+    <label>Questions</label>
+    <p class="hint">One per line: <code>Question | A | B | C | D | CorrectIndex (0-3)</code></p>
+    <textarea id="questions" rows="14"></textarea>
+    <button class="btn primary" id="createBtn" style="margin-top:16px">Create Game</button>
+    <p id="setupError" class="error"></p>
+  </div>
+
+  <div id="lobbyView" class="hidden">
+    <div class="code-box">
+      <div>Game Code</div>
+      <div class="code" id="gameCode">----</div>
+      <div class="hint" id="joinUrl"></div>
+      <img id="qr" alt="QR" style="margin-top:16px;border-radius:8px;background:#fff;padding:8px" />
+    </div>
+    <h2>Players (<span id="playerCount">0</span>)</h2>
+    <div id="playerList" class="player-list"></div>
+    <button class="btn primary" id="startBtn" disabled>Start Game</button>
+  </div>
+
+  <div id="questionView" class="hidden">
+    <div class="topbar">
+      <span id="qProgress">Question 1 / 10</span>
+      <span>Answers: <span id="answerCount">0 / 0</span></span>
+    </div>
+    <h2 id="questionText"></h2>
+    <div id="optionsHost" class="options"></div>
+    <div id="hostTimer" class="timer">20</div>
+    <button class="btn secondary" id="revealBtn">Reveal Now</button>
+  </div>
+
+  <div id="revealView" class="hidden">
+    <h2 id="revealTitle">Answer</h2>
+    <div id="revealOptions" class="options"></div>
+    <h3>Leaderboard</h3>
+    <div id="leaderboard" class="leaderboard"></div>
+    <button class="btn primary" id="continueBtn">Next Question</button>
+  </div>
+
+</div>
+<script src="/socket.io/socket.io.js"></script>
+<script src="host.js"></script>
+</body>
+</html>

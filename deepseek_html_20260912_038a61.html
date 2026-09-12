@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>Play - Live Trivia</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+
+  <div id="joinView">
+    <h1>🎯 Join Quiz</h1>
+    <label>Game Code</label>
+    <input id="code" inputmode="numeric" maxlength="4" placeholder="1234" />
+    <label>Your Name</label>
+    <input id="name" maxlength="20" placeholder="Your name" />
+    <button class="btn primary" id="joinBtn" style="margin-top:16px">Join</button>
+    <p id="joinError" class="error"></p>
+  </div>
+
+  <div id="lobbyView" class="hidden">
+    <h2>You're in!</h2>
+    <p class="sub">Waiting for the host to start…</p>
+    <div class="code-box">
+      <div>Game Code</div>
+      <div class="code" id="lobbyCode">----</div>
+    </div>
+  </div>
+
+  <div id="questionView" class="hidden">
+    <div class="topbar">
+      <span id="pProgress">Q 1/10</span>
+      <span>Score: <span id="pScore">0</span></span>
+    </div>
+    <h2 id="pQuestion"></h2>
+    <div id="pOptions" class="options"></div>
+    <div id="pTimer" class="timer">20</div>
+    <p id="pResult" class="result"></p>
+  </div>
+
+  <div id="revealView" class="hidden">
+    <h2 id="pRevealTitle"></h2>
+    <h3>Leaderboard</h3>
+    <div id="pLeaderboard" class="leaderboard"></div>
+  </div>
+
+  <div id="endView" class="hidden">
+    <h2>🏆 Final Results</h2>
+    <div id="pFinalLeaderboard" class="leaderboard"></div>
+  </div>
+
+</div>
+<script src="/socket.io/socket.io.js"></script>
+<script src="play.js"></script>
+</body>
+</html>
